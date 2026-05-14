@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Cairo:wght@200;300;400;500;600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@100;200;300;400;500;600;700&family=Tajawal:wght@200;300;400;500;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Montserrat:wght@100;200;300;400;500;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Cormorant Garamond", serif;
+  --font-sans: "Montserrat", sans-serif;
+  --font-display: "Playfair Display", serif;
+  --font-arabic: "Almarai", "IBM Plex Sans Arabic", sans-serif;
+  --font-arabic-display: "IBM Plex Sans Arabic", sans-serif;
+
+  --color-luxury-cream: #F9F7F2;
+  --color-luxury-nude: #EAE7E1;
+  --color-luxury-gold: #D4AF37;
+  --color-luxury-champagne: #F7E7CE;
+  --color-luxury-black: #1A1A1A;
+  --color-luxury-soft-black: #2A2A2A;
+}
+
+@layer base {
+  body {
+    @apply bg-luxury-cream text-luxury-black font-sans selection:bg-luxury-gold selection:text-white;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/40 backdrop-blur-md border border-white/50 shadow-sm transition-all duration-500;
+  }
+
+  .luxury-button {
+    @apply relative overflow-hidden px-10 py-5 bg-luxury-black text-luxury-cream font-bold uppercase tracking-[0.2em] text-[10px] transition-all duration-500 hover:bg-luxury-gold hover:text-white shadow-xl hover:-translate-y-1 active:translate-y-0 flex items-center justify-center gap-3;
+  }
+
+  .luxury-button-outline {
+    @apply relative overflow-hidden px-10 py-5 border border-luxury-black text-luxury-black font-bold uppercase tracking-[0.2em] text-[10px] transition-all duration-500 hover:bg-luxury-black hover:text-white hover:-translate-y-1 active:translate-y-0 flex items-center justify-center gap-3;
+  }
+
+  .frosted-nav {
+    @apply bg-white/60 backdrop-blur-xl border border-white/80 rounded-full shadow-2xl;
+  }
+  
+  .rtl {
+    direction: rtl;
+    @apply font-arabic;
+    line-height: 1.8;
+  }
+
+  .rtl h1, .rtl h2, .rtl h3, .rtl h4, .rtl h5, .rtl h6 {
+    @apply font-arabic-display;
+    letter-spacing: 0;
+    font-weight: 800;
+    line-height: 1.3;
+    text-transform: none;
+  }
+
+  /* Stylish emphasis for Arabic instead of slanting */
+  .rtl .italic, .rtl i, .rtl em {
+    font-style: normal !important;
+    @apply text-luxury-gold font-bold;
+    position: relative;
+    display: inline-block;
+    padding: 0 0.1em;
+  }
+
+  .rtl .luxury-button, .rtl .luxury-button-outline {
+    @apply font-arabic;
+    letter-spacing: 0;
+    font-weight: 700;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+  }
+
+  /* Adjust spacing for Arabic hero headings */
+  .rtl h1 {
+    line-height: 1.15;
+    @apply text-5xl md:text-7xl lg:text-8xl;
+  }
+
+  .rtl .tracking-widest, .rtl .tracking-[0.3em], .rtl .tracking-[0.4em], .rtl .tracking-[0.2em] {
+    letter-spacing: 0 !important;
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    @apply bg-luxury-gold text-white;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-luxury-cream;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-luxury-gold/30 rounded-full hover:bg-luxury-gold/60;
+}
+
+@keyframes slow-zoom {
+  0% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.animate-slow-zoom {
+  animation: slow-zoom 20s ease-out forwards;
+}
+
+@keyframes scroll-text {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-scroll-text {
+  animation: scroll-text 30s linear infinite;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  @apply bg-luxury-gold/20 rounded-full;
+}
+
